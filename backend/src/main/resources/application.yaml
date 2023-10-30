@@ -1,0 +1,17 @@
+##########################################################
+# application.yaml   (used for development purposes)
+#
+# NOTE:  Make sure there are no leading spaces on any of these lines
+##########################################################
+name: app1
+server.servlet.context-path: /app16
+server.port: 8080
+
+
+# Set the Active profile to be dev
+spring.profiles.active: dev
+
+# Disable cors check because we are running in local dev mode
+# NOTE:  order is important.  Make sure disable.cors comes *AFTER* you set the profile
+disable.cors: true
+
