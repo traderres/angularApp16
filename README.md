@@ -1,4 +1,4 @@
-# angularApp16 / Lesson 1
+# AngularApp16 / Lesson 1 / Setup Frontend & Backend
 
 ```
 Assumptions
