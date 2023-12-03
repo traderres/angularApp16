@@ -1,4 +1,4 @@
-# angularApp16
+# AngularApp16 / Lesson 2 / Setup empty header, navbar
 
 ```
 Assumptions
