@@ -85,7 +85,7 @@ Procedures
        unix> mvn clean package -Pprod
        
     c. Run the webapp
-       unix> java -jar ./backend/target/backend-exec.jar
+       unix> java -jar ./backend/target/backend-1.0-SNAPSHOT-exec.jar
        
     d. Connect to the webapp listening on port 8080
        Go to http://localhost:8080/app16
