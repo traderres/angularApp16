@@ -1,4 +1,4 @@
-# angularApp16
+# angularApp16 / Lesson 1
 
 ```
 Assumptions
@@ -81,6 +81,7 @@ Procedures
       
     b. Build the project
        unix> cd angularApp16
+       unix> git checkout lesson1/setup_project_structure
        unix> mvn clean package -Pprod
        
     c. Run the webapp
