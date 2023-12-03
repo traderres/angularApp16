@@ -81,6 +81,7 @@ Procedures
       
     b. Build the project
        unix> cd angularApp16
+       unix> git checkout lesson2/setup-header-and-navbar
        unix> mvn clean package -Pprod
        
     c. Run the webapp
