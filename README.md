@@ -1,6 +1,6 @@
 # AngularApp16 / Lesson 5a / Setup Navbar w/Angular Material
 
-```
+<pre>
 Assumptions
  A) You have Maven 3.6.3 installed      (the frontend-maven-plugin requires Maven 3.6.0 or greater)
     [see learnMaven / howToInstallMaven_3.6.3.OnCentOS.txt]
@@ -93,4 +93,9 @@ Procedures
     e. Stop the webapp by pressing Control-C
 
 
-```
+ 3. Setup Debugging in IntelliJ Ultimate
+    a. Open the project in IntelliJ
+    b. <a href="https://github.com/traderres/webClass/blob/master/learnAngular/lessons_Angular16/howToDebugExistingWebapp.txt">Setup debugging (so you can debug TypeScript and Java code)</a>
+
+
+</pre>
