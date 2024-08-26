@@ -79,18 +79,20 @@ Procedures
     a. Clone the project
        unix> git clone https://github.com/traderres/angularApp16.git
       
-    b. Build the project
-       unix> cd angularApp16
-       unix> git checkout lesson5a/setup-navbar-using-angular-material
+    b. Checkout the correct branch
+       terminal> cd angularApp16
+       terminal> git checkout lesson5a/setup-navbar-using-angular-material
+
+    c. Build the project
        unix> mvn clean package -Pprod
        
-    c. Run the webapp
+    d. Run the webapp
        unix> java -jar ./backend/target/backend-1.0-SNAPSHOT-exec.jar 
        
-    d. Connect to the webapp listening on port 8080
+    e. Connect to the webapp listening on port 8080
        Go to http://localhost:8080/app16
     
-    e. Stop the webapp by pressing Control-C
+    f. Stop the webapp by pressing Control-C
 
 
  3. Setup Debugging in IntelliJ Ultimate
