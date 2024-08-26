@@ -81,12 +81,12 @@ Procedures
        terminal> git clone https://github.com/traderres/angularApp16.git
  
     b. Checkout the correct branch
+       terminal> cd angularApp16
        terminal> git checkout lesson6/add-database-and-es
 
     c. Initialize the local postgres database by following the steps in docs/howToInitializePostgresDatabase.dev.txt
     
     d. Build the project
-       terminal> cd angularApp16
        terminal> mvn clean package -Pprod
     
     e. Nuke the database and rebuild ElasticSearch 
@@ -99,6 +99,8 @@ Procedures
        Go to http://localhost:8080/app16
     
     h. Stop the webapp by pressing Control-C
+
+
 
 
  3. Setup Debugging in IntelliJ Ultimate
