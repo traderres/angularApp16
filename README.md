@@ -1,4 +1,4 @@
-# AngularApp16 / Lesson 8 / Add ag-grid
+# AngularApp16 / Lesson 9 / Add add spring profile for oauth2 integration
 
 <pre>
 Assumptions
@@ -82,7 +82,7 @@ Procedures
  
     b. Checkout the correct branch
        terminal> cd angularApp16
-       terminal> git checkout lesson8/add-grid
+       terminal> git checkout lesson9/login-gov-integration
 
     c. Initialize the local postgres database by following the steps in docs/howToInitializePostgresDatabase.dev.txt
     
