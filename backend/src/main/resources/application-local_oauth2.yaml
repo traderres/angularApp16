@@ -1,0 +1,140 @@
+#################################################################################################
+#            L O C A L      O A U T H 2        P R O F I L E
+#
+# Filename:  application-local_oauth2.yaml
+# Purpose:   Set the local_oauth2 profile for testing with a local keycloak
+#
+# You will need these VM options to run in your debugger or command-line
+#    -Dspring.profiles.active=local_oauth2  -Djavax.net.ssl.trustStorePassword=changeit  -Djavax.net.ssl.trustStore=backend/src/main/dev-resources/cacerts
+#
+# How to run:
+#  1. Startup your local keycloak to listen on SSL on port 8444
+#     terminal> cd /path-to-keycloak
+#     terminal> ./start.kc.ssl.sh
+#
+#  2. Add the p12 accounts to keycloak realm called "MyRealm"
+#
+#  3. Compile the build
+#      terminal> mvn clean package -Pprod
+#
+#  4. Run the jar using the local_oauth2 profile
+#     terminal> java  -Dspring.profiles.active=local_oauth2  -Djavax.net.ssl.trustStorePassword=changeit  -Djavax.net.ssl.trustStore=backend/src/main/dev-resources/cacerts -jar backend/target/backend-1.0-SNAPSHOT-exec.jar
+#
+#  5. Connect to the webapp
+#     a. Import the public cert: public.ca.root.pem
+#     b. Import one of the p12 in the backend/src/main/dev-resources
+#     c. Go to https://localhost.localdomain:8443/app16
+#
+#################################################################################################
+
+name: app16
+server.servlet.context-path: /app16
+
+# Provide the trustStore for the local keycloak
+
+
+# Disable cors check because we are running in local dev mode
+# NOTE:  order is important.  Make sure disable.cors comes *AFTER* you set the profile
+disable.cors: true
+
+
+# Show Exception info to local developers
+exception_handler.return_dev_info: true
+
+
+# Disable setting the last_login_date upon authentication
+# NOTE:  When running in local mode, there is no saved session.  So, every REST call runs sql to update the user's last login date
+#        Setting this flag to false ensures that the last login date is NOT set (which reduces the load on the developer's laptop)
+authenticate.set_last_login_date.is_enabled: false
+
+
+
+
+
+##########################################################
+# Security & SSL Settings
+#
+# Set the security mode to "keycloak" so it authenticates against keycloak
+##########################################################
+security.mode: keycloak          # Possible values are localdev or keycloak
+
+server:
+  port: 8443
+  ssl:
+    key-store: backend/src/main/dev-resources/webapp.keystore.jks
+    key-store-password: changeit
+    key-store-type: JKS
+    trust-store: backend/src/main/dev-resources/webapp.truststore.jks
+    trust-store-password: changeit
+    trust-store-type: JKS
+    enabled: true
+
+# Secure the cookies
+server.servlet.session.cookie.secure: true
+server.servlet.session.cookie.http-only: true
+
+server.use-forward-headers: true
+
+
+##############################################################################
+# Keycloak Settings for Spring Security
+#
+# The realm url is probably something like https://keycloak.rbr-tech.com:8444/realms/MyRealm
+##############################################################################
+spring.security.oauth2.client.registration.keycloak.client-id: app16-webapp
+
+spring.security.oauth2.client.registration.keycloak.authorization-grant-type: authorization_code
+spring.security.oauth2.client.registration.keycloak.scope: openid,email,profile,phone,address
+spring.security.oauth2.client.provider.keycloak.issuer-uri: https://localhost.localdomain:8444/realms/MyRealm
+spring.security.oauth2.client.provider.keycloak.user-name-attribute: preferred_username
+  
+
+# for keycloak 25 that *WORKS*
+# spring.security.oauth2.client.registration.keycloak.client-secret: j4W4c7EpPI2rfT7fKgt28oYDUi19fF66    # works
+
+# For keycloak 25 that is experimental
+spring.security.oauth2.client.registration.keycloak.client-secret: Ea2E77Lf5HKkVL4h3Kzl6PSrWmWpqCPz
+
+##########################################################
+# Database Settings
+##########################################################
+app.datasource:
+  enabled: true
+  driver-class-name: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5432/app16_db
+  username: app16_user
+  password: secret
+  schema: app16_db
+  maxPoolSize: 5
+  database-name: app16_db
+
+
+
+
+##########################################################
+# ElasticSearch Settings
+##########################################################
+es:
+  url: http://localhost:9201
+  ssl_enabled: false
+
+
+
+
+##########################################################
+# Document Settings
+##########################################################
+root.dir: c:/temp/app16
+uploads.dir: ${root.dir}/uploads
+s3.enabled: false
+
+
+
+
+##########################################################
+# Virus Scanning Settings
+##########################################################
+virus-scanning.enabled: false
+qlack.util.clamav.host: localhost
+qlack.util.clamav.port: 3310
+qlack.util.clamav.socket.timeout: 100000
