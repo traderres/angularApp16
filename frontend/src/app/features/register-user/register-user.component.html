@@ -1,3 +1,4 @@
+<form [formGroup]="this.myForm" autocomplete="off" novalidate>
 <div class="m-2.5">
 
   <div class="grid grid-cols-2">
@@ -30,52 +31,81 @@
 
 
       <!--   S T E P    # 1    /       U S E R       P R O F I L E  -->
-      <mat-step>
+      <mat-step [completed]="false">
 
         <!-- Set the Step Label -->
         <ng-template matStepLabel>User Profile</ng-template>
 
-        <div class="mt-2.5 border border-10">
+        <div class="p-2.5 mt-2.5 border border-10">
           <span class="text-xl">User Profile</span>
 
           <div class="ml-2.5 flex flex-col gap-y-2.5">
             <div>
-              Username Textbox
+              <mat-form-field>
+                <mat-label>Username</mat-label>
+
+                <input type="text" formControlName="username" matInput title="Enter Username" aria-label="Enter Username" />
+              </mat-form-field>
             </div>
 
             <div>
-              Title Textbox
+              <mat-form-field>
+                <mat-label>Title</mat-label>
+
+                <input type="text" formControlName="title" matInput title="Enter Title" aria-label="Enter Title" />
+              </mat-form-field>
             </div>
 
             <div>
-              Email Textbox
+              <mat-form-field>
+                <mat-label>Email Address</mat-label>
+
+                <input type="text" formControlName="email" matInput title="Enter Email Address" aria-label="Enter Email Address" />
+              </mat-form-field>
             </div>
 
             <div>
-              Phone Textbox
+              <mat-form-field>
+                <mat-label>Phone Number</mat-label>
+
+                <input type="text" appPhoneMask formControlName="phoneNumber" matInput title="Enter Phone Number" aria-label="Enter Phone Number" />
+              </mat-form-field>
             </div>
 
             <div class="flex place-content-center">
               <div>
-                Next button
+                <button type="button" mat-raised-button (click)="this.nextClicked()"
+                        [disabled]="!this.myForm.controls.username.valid || !this.myForm.controls.title.valid || !this.myForm.controls.email.valid || !this.myForm.controls.phoneNumber.valid"
+                 title="Next" aria-label="Next">Next</button>
               </div>
             </div>
           </div>
 
+<pre>
+this.myForm.valid = {{ this.myForm.valid }}
+this.myForm.controls.username.valid = {{  this.myForm.controls.username.valid }}
+this.myForm.controls.title.valid = {{  this.myForm.controls.title.valid }}
+this.myForm.controls.email.valid = {{  this.myForm.controls.email.valid }}
+this.myForm.controls.phoneNumber.valid = {{  this.myForm.controls.phoneNumber.valid }}
+</pre>
 
         </div>
       </mat-step>
 
       <!--   S T E P    # 2    /    B U S I N E S S       I N F O  -->
-      <mat-step>
+      <mat-step [completed]="false">
         <ng-template matStepLabel>Business Info</ng-template>
 
-        <div class="mt-2.5 border border-10">
+        <div class="p-2.5 mt-2.5 border border-10">
           <span class="text-xl">Business Info</span>
 
           <div class="ml-2.5 flex flex-col gap-y-2.5">
             <div>
-              Business CAGE Textbox
+              <mat-form-field>
+                <mat-label>CAGE Code</mat-label>
+
+                <input type="text" matInput title="Enter CAGE" aria-label="Enter CAGE" />
+              </mat-form-field>
             </div>
 
             <div>
@@ -84,11 +114,59 @@
 
             <div class="flex place-content-center gap-x-2.5">
               <div>
-                Prev Button
+                <button type="button" mat-raised-button (click)="this.previousClicked()" title="Previous" aria-label="Previous">Prev</button>
               </div>
 
               <div>
-                Next button
+                <button type="button" mat-raised-button (click)="this.nextClicked()" title="Next" aria-label="Next">Next</button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </mat-step>
+
+
+      <!--   S T E P    # 3    /    B A C K U P       P O C     -->
+      <mat-step [completed]="false">
+        <ng-template matStepLabel>Backup POC</ng-template>
+
+        <div class="p-2.5 mt-2.5 border border-10">
+          <span class="text-xl">Backup Point of Contact</span>
+
+          <div class="ml-2.5 flex flex-col gap-y-2.5">
+            <div>
+              <mat-form-field>
+                <mat-label>Backup POC Full Name</mat-label>
+
+                <input type="text" matInput title="Enter Backup POC Full Name" aria-label="Enter Backup POC Full Name" />
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field>
+                <mat-label>Backup POC Email Address</mat-label>
+
+                <input type="text" matInput title="Enter Backup POC Email Address" aria-label="Enter Backup POC Email Address" />
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field>
+                <mat-label>Backup POC Phone Number</mat-label>
+
+                <input type="text" matInput title="Enter Backup POC Phone Number" aria-label="Enter Backup POC Phone Number" />
+              </mat-form-field>
+            </div>
+
+            <div class="flex place-content-center gap-x-2.5">
+              <div>
+                <button type="button" mat-raised-button (click)="this.previousClicked()" title="Previous" aria-label="Previous">Prev</button>
+              </div>
+
+              <div>
+                <button type="button" mat-raised-button (click)="this.nextClicked()" title="Next" aria-label="Next">Next</button>
               </div>
             </div>
           </div>
@@ -99,8 +177,52 @@
 
 
 
+      <!--   S T E P    # 4    /    R E V I E W      -->
+      <mat-step [completed]="false">
+        <ng-template matStepLabel>Review</ng-template>
+
+        <div class="p-2.5 mt-2.5 border border-10">
+          <span class="text-xl">Review</span>
+
+          <div class="ml-2.5 flex flex-col gap-y-2.5">
+            <div>
+              Entered Username
+            </div>
+
+            <div>
+              Entered Title
+            </div>
+
+            <div>
+              Entered Email
+            </div>
+
+            <div>
+              Entered Phone
+            </div>
+
+            <div>
+              Entered CAGE / Business Name
+            </div>
+
+            <div class="flex place-content-center gap-x-2.5">
+              <div>
+                <button type="button" mat-raised-button (click)="this.previousClicked()" title="Previous" aria-label="Previous">Prev</button>
+              </div>
+
+              <div>
+                <button type="button" mat-raised-button color="accent" (click)="this.submitClicked()" title="Submit" aria-label="Submit">Submit</button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </mat-step>
+
     </mat-stepper>
 
   </div>
 
 </div>
+</form>

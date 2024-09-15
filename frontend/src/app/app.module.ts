@@ -44,6 +44,7 @@ import {AgGridModule} from "ag-grid-angular";
 import { ListExceptionsGridComponent } from './features/admin/list-exceptions/list-exceptions-grid/list-exceptions-grid.component';
 import { ListExceptionsActionRendererComponent } from './features/admin/list-exceptions/list-exceptions-action-renderer/list-exceptions-action-renderer.component';
 import { RegisterUserComponent } from './features/register-user/register-user.component';
+import { PhoneMaskDirective } from './directives/phone-mask.directive';
 
 // Setup the routes.  If no route is found, then take the user to the NotFoundComponent
 // NOTE:  The **ORDER** of these routes matters.  The NotFoundComponent should always be last
@@ -73,7 +74,8 @@ const appRoutes: Routes = [
     UserSettingsComponent,
     ListExceptionsGridComponent,
     ListExceptionsActionRendererComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    PhoneMaskDirective
   ],
   imports: [
     AgGridModule,
