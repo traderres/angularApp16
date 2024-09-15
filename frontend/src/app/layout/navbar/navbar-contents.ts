@@ -27,7 +27,11 @@ export const navbarContents: NavGroup[] = [
 			{
 				navItemName: "Sample Page 2",
 				navItemUrl: Constants.SAMPLE_PAGE_ROUTE_2,
-			}
+			},
+      {
+        navItemName: "Register User",
+        navItemUrl: Constants.REGISTER_USER_ROUTE,
+      }
 		],
 	},
 	{

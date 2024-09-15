@@ -85,6 +85,7 @@ insert into uicontrols(id, name) values(3002, 'page/sample-page');
 insert into uicontrols(id, name) values(3003, 'page/sample-page-2');
 insert into uicontrols(id, name) values(3004, 'page/admin/list-exceptions');
 insert into uicontrols(id, name) values(3005, 'page/admin/user-admin');
+insert into uicontrols(id, name) values(4000, 'page/register-user');
 
 
 -----------------------------------------------------------------------------

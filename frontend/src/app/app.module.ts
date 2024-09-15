@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,6 +43,7 @@ import {PageGuard} from "./guards/page.guard";
 import {AgGridModule} from "ag-grid-angular";
 import { ListExceptionsGridComponent } from './features/admin/list-exceptions/list-exceptions-grid/list-exceptions-grid.component';
 import { ListExceptionsActionRendererComponent } from './features/admin/list-exceptions/list-exceptions-action-renderer/list-exceptions-action-renderer.component';
+import { RegisterUserComponent } from './features/register-user/register-user.component';
 
 // Setup the routes.  If no route is found, then take the user to the NotFoundComponent
 // NOTE:  The **ORDER** of these routes matters.  The NotFoundComponent should always be last
@@ -53,6 +53,7 @@ const appRoutes: Routes = [
   { path:  Constants.LIST_EXCEPTIONS_ROUTE,   component: ListExceptionsGridComponent,  canActivate: [PageGuard.canActivate ] },
   { path:  Constants.USER_ADMIN_ROUTE,        component: UserAdminComponent,           canActivate: [PageGuard.canActivate ] },
   { path:  Constants.USER_SETTINGS_ROUTE,     component: UserSettingsComponent,        canActivate: [PageGuard.canActivate ] },
+  { path:  Constants.REGISTER_USER_ROUTE,     component: RegisterUserComponent,        canActivate: [PageGuard.canActivate ] },
 
   { path:  '',                                component: WelcomeComponent,             canActivate: [PageGuard.canActivate ] },
   { path:  '**',                              component: NotFoundComponent }
@@ -71,7 +72,8 @@ const appRoutes: Routes = [
     UserAdminComponent,
     UserSettingsComponent,
     ListExceptionsGridComponent,
-    ListExceptionsActionRendererComponent
+    ListExceptionsActionRendererComponent,
+    RegisterUserComponent
   ],
   imports: [
     AgGridModule,

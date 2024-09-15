@@ -1,0 +1,106 @@
+<div class="m-2.5">
+
+  <div class="grid grid-cols-2">
+    <div>
+      <span class="text-xl">User Registration</span>
+    </div>
+
+    <div class="flex place-content-end">Help</div>
+  </div>
+
+  <div class="mt-2.5 overflow-y-auto" style="height: calc(100vh - 145px)">
+
+    <mat-stepper labelPosition="bottom" [linear]=true #stepper>
+
+      <!-- Define the icon for state="number"  -->
+      <ng-template matStepperIcon="number" let-index="index">
+        <span>{{index + 1}}</span>
+      </ng-template>
+
+      <!-- Define the icon for state="done" -->
+      <ng-template matStepperIcon="done" let-index="index">
+        <span>{{index + 1}}</span>
+      </ng-template>
+
+      <!-- Define the icon for the *SELECTED* step  (by default it is state="edit")  -->
+      <ng-template matStepperIcon="edit" let-index="index">
+        <span>{{index + 1}}</span>
+      </ng-template>
+
+
+
+      <!--   S T E P    # 1    /       U S E R       P R O F I L E  -->
+      <mat-step>
+
+        <!-- Set the Step Label -->
+        <ng-template matStepLabel>User Profile</ng-template>
+
+        <div class="mt-2.5 border border-10">
+          <span class="text-xl">User Profile</span>
+
+          <div class="ml-2.5 flex flex-col gap-y-2.5">
+            <div>
+              Username Textbox
+            </div>
+
+            <div>
+              Title Textbox
+            </div>
+
+            <div>
+              Email Textbox
+            </div>
+
+            <div>
+              Phone Textbox
+            </div>
+
+            <div class="flex place-content-center">
+              <div>
+                Next button
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </mat-step>
+
+      <!--   S T E P    # 2    /    B U S I N E S S       I N F O  -->
+      <mat-step>
+        <ng-template matStepLabel>Business Info</ng-template>
+
+        <div class="mt-2.5 border border-10">
+          <span class="text-xl">Business Info</span>
+
+          <div class="ml-2.5 flex flex-col gap-y-2.5">
+            <div>
+              Business CAGE Textbox
+            </div>
+
+            <div>
+              List of Registered CAGE Codes
+            </div>
+
+            <div class="flex place-content-center gap-x-2.5">
+              <div>
+                Prev Button
+              </div>
+
+              <div>
+                Next button
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </mat-step>
+
+
+
+    </mat-stepper>
+
+  </div>
+
+</div>
