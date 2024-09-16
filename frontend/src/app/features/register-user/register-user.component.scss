@@ -11,3 +11,9 @@
 //:host ::ng-deep .mat-stepper-horizontal .mat-stepper-horizontal-line {
 //  --mat-stepper-header-height: 42px;
 //}
+
+.no-clickable {
+  pointer-events: none !important;
+}
+
+

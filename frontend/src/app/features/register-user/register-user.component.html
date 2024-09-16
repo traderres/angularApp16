@@ -11,7 +11,8 @@
 
   <div class="mt-2.5 overflow-y-auto" style="height: calc(100vh - 145px)">
 
-    <mat-stepper labelPosition="bottom" [linear]=true #stepper>
+    <mat-stepper labelPosition="bottom" [linear]=true #stepper
+                 [ngClass]="{'no-clickable': this.submitInProgress }">
 
       <!-- Define the icon for state="number"  -->
       <ng-template matStepperIcon="number" let-index="index">
@@ -207,11 +208,15 @@ this.myForm.controls.phoneNumber.valid = {{  this.myForm.controls.phoneNumber.va
 
             <div class="flex place-content-center gap-x-2.5">
               <div>
-                <button type="button" mat-raised-button (click)="this.previousClicked()" title="Previous" aria-label="Previous">Prev</button>
+                <button type="button" mat-raised-button (click)="this.previousClicked()"
+                        [disabled]="this.submitInProgress"
+                        title="Previous" aria-label="Previous">Prev</button>
               </div>
 
               <div>
-                <button type="button" mat-raised-button color="accent" (click)="this.submitClicked()" title="Submit" aria-label="Submit">Submit</button>
+                <button type="button" mat-raised-button color="accent" (click)="this.submitClicked()"
+                        [disabled]="this.submitInProgress"
+                        title="Submit" aria-label="Submit">Submit</button>
               </div>
             </div>
           </div>

@@ -12,6 +12,7 @@ export class RegisterUserComponent implements OnInit {
   @ViewChild('stepper')  stepper: MatStepper;
 
   public myForm: FormGroup;
+  public submitInProgress: boolean = false;
 
   public constructor(private formBuilder: FormBuilder,
                      private validatorService: ValidatorService) {
@@ -39,12 +40,20 @@ export class RegisterUserComponent implements OnInit {
   }
 
   public previousClicked(): void {
+    this.submitInProgress = false;
+
     // Return to the previous step
+
     this.stepper.previous();
   }
 
 
   public submitClicked(): void {
+    this.submitInProgress = true;
+
+    setTimeout( () => {
+      this.submitInProgress = false;
+    }, 5000)
 
   }
 
