@@ -45,6 +45,7 @@ import { ListExceptionsGridComponent } from './features/admin/list-exceptions/li
 import { ListExceptionsActionRendererComponent } from './features/admin/list-exceptions/list-exceptions-action-renderer/list-exceptions-action-renderer.component';
 import { RegisterUserComponent } from './features/register-user/register-user.component';
 import { PhoneMaskDirective } from './directives/phone-mask.directive';
+import { RegistrationPendingVerificationComponent } from './features/registration-pending-verification/registration-pending-verification.component';
 
 // Setup the routes.  If no route is found, then take the user to the NotFoundComponent
 // NOTE:  The **ORDER** of these routes matters.  The NotFoundComponent should always be last
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
   { path:  Constants.USER_ADMIN_ROUTE,        component: UserAdminComponent,           canActivate: [PageGuard.canActivate ] },
   { path:  Constants.USER_SETTINGS_ROUTE,     component: UserSettingsComponent,        canActivate: [PageGuard.canActivate ] },
   { path:  Constants.REGISTER_USER_ROUTE,     component: RegisterUserComponent,        canActivate: [PageGuard.canActivate ] },
+  { path:  Constants.PENDING_REGISTRATION_ROUTE,     component: RegistrationPendingVerificationComponent,        canActivate: [PageGuard.canActivate ] },
 
   { path:  '',                                component: WelcomeComponent,             canActivate: [PageGuard.canActivate ] },
   { path:  '**',                              component: NotFoundComponent }
@@ -75,7 +77,8 @@ const appRoutes: Routes = [
     ListExceptionsGridComponent,
     ListExceptionsActionRendererComponent,
     RegisterUserComponent,
-    PhoneMaskDirective
+    PhoneMaskDirective,
+    RegistrationPendingVerificationComponent
   ],
   imports: [
     AgGridModule,

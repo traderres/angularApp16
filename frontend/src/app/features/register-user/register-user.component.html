@@ -12,7 +12,7 @@
   <div class="mt-2.5 overflow-y-auto" style="height: calc(100vh - 145px)">
 
     <mat-stepper labelPosition="bottom" [linear]=true #stepper
-                 [ngClass]="{'no-clickable': this.submitInProgress }">
+                 [ngClass]="{'not-clickable': this.submitInProgress }">
 
       <!-- Define the icon for state="number"  -->
       <ng-template matStepperIcon="number" let-index="index">
@@ -214,9 +214,23 @@ this.myForm.controls.phoneNumber.valid = {{  this.myForm.controls.phoneNumber.va
               </div>
 
               <div>
+
+                <!-- SUBMIT Button -->
                 <button type="button" mat-raised-button color="accent" (click)="this.submitClicked()"
                         [disabled]="this.submitInProgress"
-                        title="Submit" aria-label="Submit">Submit</button>
+                        title="Submit" aria-label="Submit">
+
+                  <ng-container *ngIf="this.submitInProgress">
+                      <!-- Submitting REST call.  So, show spinner -->
+                      <i class="fa fa-spin fa-spinner text-lg"></i>
+                      Submitting...
+                  </ng-container>
+
+                  <ng-container *ngIf="!this.submitInProgress">
+                    <!-- Not Submitting REST Call.  So, show "Submit" -->
+                    Submit
+                  </ng-container>
+                </button>
               </div>
             </div>
           </div>

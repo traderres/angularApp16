@@ -1,18 +1,5 @@
-//div {
-//  border: 1px dashed black;
-//}
-//
-//:host ::ng-deep .mat-stepper-horizontal .mat-horizontal-stepper-header {
-//  /* Reduce the padding on each step */
-//  padding: 8px;
-//  height:auto;
-//}
-//
-//:host ::ng-deep .mat-stepper-horizontal .mat-stepper-horizontal-line {
-//  --mat-stepper-header-height: 42px;
-//}
 
-.no-clickable {
+.not-clickable {
   pointer-events: none !important;
 }
 

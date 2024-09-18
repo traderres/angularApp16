@@ -31,6 +31,10 @@ export const navbarContents: NavGroup[] = [
       {
         navItemName: "Register User",
         navItemUrl: Constants.REGISTER_USER_ROUTE,
+      },
+      {
+        navItemName: "Pending Registration",
+        navItemUrl: Constants.PENDING_REGISTRATION_ROUTE,
       }
 		],
 	},

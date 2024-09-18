@@ -46,6 +46,27 @@ create index on exceptions(event_date);
 
 
 -----------------------------------------------------------------------------
+-- Create this table:  registration_states
+-----------------------------------------------------------------------------
+create table registration_states
+(
+    id   integer      not null,
+    name varchar(100) not null,
+    primary key (id)
+);
+comment on table registration_states is 'This table hold the registration states that a user can be in';
+
+
+-- Insert the lookup values into this table
+insert into registration_states(id, name) values
+	(1, 'Unregistered'),
+	(2, 'Waiting for Verification'),
+	(3, 'Registration Approved'),
+	(4, 'Registration Denied');
+
+
+
+-----------------------------------------------------------------------------
 -- Create this table:  users
 -----------------------------------------------------------------------------
 create table users
@@ -61,7 +82,9 @@ create table users
     created_date         timestamp     not null,
     last_login_date      timestamp     not null,
     last_updated_date    timestamp     not null,
-    primary key (id)
+    registration_state   integer       not null default(1),
+    primary key (id),
+    constraint fk_registration_state FOREIGN KEY (registration_state) references registration_states(id)
 );
 comment on table users is 'The Users table holds information about each user';
 
@@ -87,6 +110,7 @@ create table users_aud
     created_date         timestamp         null,
     last_login_date      timestamp         null,
     last_updated_date    timestamp         null,
+    registration_state   integer           null,
     timestamp            timestamp     not null,
     username             varchar(100)  not null,
     audit_type           integer       not null, --0 create, 1 update, 2 delete

@@ -2,6 +2,10 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatStepper} from "@angular/material/stepper";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ValidatorService} from "../../services/validator.service";
+import {RegisterUserDTO} from "../../models/register-user-dto";
+import {RegistrationService} from "../../services/registration.service";
+import {Router} from "@angular/router";
+import {Constants} from "../../utilities/constants";
 
 @Component({
   selector: 'app-register-user',
@@ -15,7 +19,9 @@ export class RegisterUserComponent implements OnInit {
   public submitInProgress: boolean = false;
 
   public constructor(private formBuilder: FormBuilder,
-                     private validatorService: ValidatorService) {
+                     private validatorService: ValidatorService,
+                     private registrationService: RegistrationService,
+                     private router: Router) {
 
   }
 
@@ -40,10 +46,7 @@ export class RegisterUserComponent implements OnInit {
   }
 
   public previousClicked(): void {
-    this.submitInProgress = false;
-
     // Return to the previous step
-
     this.stepper.previous();
   }
 
@@ -51,10 +54,18 @@ export class RegisterUserComponent implements OnInit {
   public submitClicked(): void {
     this.submitInProgress = true;
 
-    setTimeout( () => {
-      this.submitInProgress = false;
-    }, 5000)
+    // Create the DTO and populate it from the form fields
+    let dto: RegisterUserDTO = new RegisterUserDTO();
+    dto.email = this.myForm.controls.email.value;
+    dto.username = this.myForm.controls.username.value;
 
+    this.registrationService.registerUser(dto).subscribe( () => {
+      // REST call came back successfully
+      this.router.navigate([Constants.PENDING_REGISTRATION_ROUTE]).then()
+    }).add( () => {
+      // REST call finally block
+      this.submitInProgress = false;
+    });
   }
 
 }

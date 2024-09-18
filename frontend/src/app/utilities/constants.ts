@@ -12,6 +12,7 @@ export enum Constants {
   LIST_EXCEPTIONS_ROUTE                      = "page/admin/list-exceptions",
   USER_ADMIN_ROUTE                           = "page/admin/user-admin",
   REGISTER_USER_ROUTE                        = "page/register-user",
+  PENDING_REGISTRATION_ROUTE                 = "page/registration-pending-verification",
 
   // Preference Names
   NAVBAR_EXTENDED_STATE_PREFERENCE_NAME      = "navbar_extended_state", // Preference name for navbar mode (extended/collapsed)
