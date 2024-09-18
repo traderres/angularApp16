@@ -46,6 +46,7 @@ import { ListExceptionsActionRendererComponent } from './features/admin/list-exc
 import { RegisterUserComponent } from './features/register-user/register-user.component';
 import { PhoneMaskDirective } from './directives/phone-mask.directive';
 import { RegistrationPendingVerificationComponent } from './features/registration-pending-verification/registration-pending-verification.component';
+import {StopUserFromRegisteringAgainGuard} from "./guards/stop-user-from-registering-again.guard";
 
 // Setup the routes.  If no route is found, then take the user to the NotFoundComponent
 // NOTE:  The **ORDER** of these routes matters.  The NotFoundComponent should always be last
@@ -55,7 +56,7 @@ const appRoutes: Routes = [
   { path:  Constants.LIST_EXCEPTIONS_ROUTE,   component: ListExceptionsGridComponent,  canActivate: [PageGuard.canActivate ] },
   { path:  Constants.USER_ADMIN_ROUTE,        component: UserAdminComponent,           canActivate: [PageGuard.canActivate ] },
   { path:  Constants.USER_SETTINGS_ROUTE,     component: UserSettingsComponent,        canActivate: [PageGuard.canActivate ] },
-  { path:  Constants.REGISTER_USER_ROUTE,     component: RegisterUserComponent,        canActivate: [PageGuard.canActivate ] },
+  { path:  Constants.REGISTER_USER_ROUTE,     component: RegisterUserComponent,        canActivate: [PageGuard.canActivate, StopUserFromRegisteringAgainGuard.canActivate ] },
   { path:  Constants.PENDING_REGISTRATION_ROUTE,     component: RegistrationPendingVerificationComponent,        canActivate: [PageGuard.canActivate ] },
 
   { path:  '',                                component: WelcomeComponent,             canActivate: [PageGuard.canActivate ] },

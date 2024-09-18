@@ -1,5 +1,6 @@
 package com.lessons.controllers;
 
+import com.lessons.models.UserRegistrationInfoDTO;
 import com.lessons.models.authentication.UserInfoDTO;
 import com.lessons.services.UserService;
 import jakarta.annotation.Resource;
@@ -33,5 +34,17 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userInfoDTO);
     }
 
+    /**
+     * REST endpoint /api/user/registration-state
+     */
+    @RequestMapping(value = "/api/user/registration-state", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasAnyRole('APP16_SUPERVISOR', 'APP16_SPECIALIST', 'APP16_ADMIN', 'APP16_REVIEWER')")
+    public ResponseEntity<?> getUserRegistrationInfo() {
+
+        UserRegistrationInfoDTO dto = userService.getUserRegistrationInfo();
+
+        // Return a response of 200 and the UserRegistrationInfoDTO object
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
 
 }

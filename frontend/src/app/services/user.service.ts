@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {catchError, EMPTY, map, Observable, shareReplay} from "rxjs";
 import {environment} from "../../environments/environment";
 import {UserInfoDTO} from "../models/user-info-dto";
+import {UserRegistrationInfoDTO} from "../models/user-registration-info-dto";
 
 
 @Injectable({
@@ -63,4 +64,9 @@ export class UserService {
   }
 
 
+  public getUserRegistrationInfo(): Observable<UserRegistrationInfoDTO> {
+    const restUrl: string = environment.baseUrl + '/api/user/registration-state';
+
+    return this.httpClient.get <UserRegistrationInfoDTO> (restUrl);
+  }
 }

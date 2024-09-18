@@ -2,6 +2,7 @@ package com.lessons.services;
 
 import com.common.utilities.AuditManager;
 import com.common.utilities.Constants;
+import com.lessons.models.UserRegistrationInfoDTO;
 import com.lessons.models.authentication.InitialUserInfoDTO;
 import com.lessons.models.authentication.KeycloakUserInfoDTO;
 import com.lessons.models.authentication.UserInfoDTO;
@@ -20,6 +21,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
@@ -420,6 +422,22 @@ public class UserService {
         UserInfoDTO userInfoDTO = new UserInfoDTO(loggedInUserId, loggedInUsername, loggedInFullName,pageRoutesMap, "");
 
         return userInfoDTO;
+    }
+
+    public UserRegistrationInfoDTO getUserRegistrationInfo() {
+        String sql = "select registration_state from users where id=?";
+
+        JdbcTemplate jt = new JdbcTemplate(this.dataSource);
+
+        Integer loggedInUserid = getLoggedInUserId();
+
+        // Execute the SQL, returning a Integer from the first row/first column
+        Integer registrationStateId = jt.queryForObject(sql, Integer.class, loggedInUserid);
+
+        UserRegistrationInfoDTO dto = new UserRegistrationInfoDTO();
+        dto.setRegistrationState(registrationStateId);
+
+        return dto;
     }
 
 }

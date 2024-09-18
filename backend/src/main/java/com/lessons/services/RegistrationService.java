@@ -32,7 +32,7 @@ public class RegistrationService {
 
         String sql = """
                     update users
-                    set last_login_date=now(), cert_username=:cert_username, email=:email
+                    set last_login_date=now(), email=:email, registration_state=2
                     where id=:id
                     """;
 
