@@ -35,6 +35,14 @@ export const navbarContents: NavGroup[] = [
       {
         navItemName: "Pending Registration",
         navItemUrl: Constants.PENDING_REGISTRATION_ROUTE,
+      },
+      {
+        navItemName: "Registration Approved",
+        navItemUrl: Constants.REGISTRATION_APPROVED_ROUTE,
+      },
+      {
+        navItemName: "HTML over Image",
+        navItemUrl: Constants.HTML_OVER_IMAGE_ROUTE,
       }
 		],
 	},

@@ -47,6 +47,8 @@ import { RegisterUserComponent } from './features/register-user/register-user.co
 import { PhoneMaskDirective } from './directives/phone-mask.directive';
 import { RegistrationPendingVerificationComponent } from './features/registration-pending-verification/registration-pending-verification.component';
 import {StopUserFromRegisteringAgainGuard} from "./guards/stop-user-from-registering-again.guard";
+import { RegistrationApprovedComponent } from './features/registration-approved/registration-approved.component';
+import { HtmlOverImageComponent } from './html-over-image/html-over-image.component';
 
 // Setup the routes.  If no route is found, then take the user to the NotFoundComponent
 // NOTE:  The **ORDER** of these routes matters.  The NotFoundComponent should always be last
@@ -58,6 +60,8 @@ const appRoutes: Routes = [
   { path:  Constants.USER_SETTINGS_ROUTE,     component: UserSettingsComponent,        canActivate: [PageGuard.canActivate ] },
   { path:  Constants.REGISTER_USER_ROUTE,     component: RegisterUserComponent,        canActivate: [PageGuard.canActivate, StopUserFromRegisteringAgainGuard.canActivate ] },
   { path:  Constants.PENDING_REGISTRATION_ROUTE,     component: RegistrationPendingVerificationComponent,        canActivate: [PageGuard.canActivate ] },
+  { path:  Constants.REGISTRATION_APPROVED_ROUTE,    component: RegistrationApprovedComponent,                   canActivate: [PageGuard.canActivate ] },
+  { path:  Constants.HTML_OVER_IMAGE_ROUTE,    component: HtmlOverImageComponent,                   canActivate: [PageGuard.canActivate ] },
 
   { path:  '',                                component: WelcomeComponent,             canActivate: [PageGuard.canActivate ] },
   { path:  '**',                              component: NotFoundComponent }
@@ -79,7 +83,9 @@ const appRoutes: Routes = [
     ListExceptionsActionRendererComponent,
     RegisterUserComponent,
     PhoneMaskDirective,
-    RegistrationPendingVerificationComponent
+    RegistrationPendingVerificationComponent,
+    RegistrationApprovedComponent,
+    HtmlOverImageComponent
   ],
   imports: [
     AgGridModule,
