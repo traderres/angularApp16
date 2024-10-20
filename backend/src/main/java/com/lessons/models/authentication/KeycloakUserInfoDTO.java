@@ -1,5 +1,6 @@
 package com.lessons.models.authentication;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
@@ -42,6 +43,7 @@ public class KeycloakUserInfoDTO {
         logger.debug("KeycloakUserInfoDTO() constructor started.  aOidcUser={}", aOidcUser.toString());
 
         this.grantedAuthorities = new ArrayList<>();
+//        this.grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_APP16_SUPERVISOR"));
 
         // Get the roles from keycloak and put them into the object called oauth2RolesGranted
         Map<String, Object> realmAccessMap = (Map<String, Object>) aOidcUser.getAttributes().get("realm_access");
@@ -71,7 +73,7 @@ public class KeycloakUserInfoDTO {
 
     public String toString() {
         return String.format("certUsername='%s'  fullName='%s'  emailAddress='%s'  firstName='%s'  lastName='%s'  roleNamesGranted=%s",
-                                this.certUsername, this.fullName, this.emailAddress, this.firstName, this.lastName, this.roleNamesGranted.toString() );
+                this.certUsername, this.fullName, this.emailAddress, this.firstName, this.lastName, StringUtils.join(this.roleNamesGranted, ", ") );
     }
 
     private List<String> getListOfUpperCaseRoleNamesFromGrantedAuthorities(List<GrantedAuthority> aListOfGrantedAuthorities) {
