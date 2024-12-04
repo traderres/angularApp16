@@ -241,5 +241,174 @@
         </plugins>
     </build>
 
+    <profiles>
+
+        <!--    B U I L D     I M A G E      P R O F I L E      (for running this app in a container)  -->
+        <profile>
+            <id>buildImage</id>
+
+            <!-- When running this profile, do *NOT* include the src/main/resources/application.yaml in the build -->
+            <build>
+                <resources>
+                    <resource>
+                        <filtering>false</filtering>
+                        <directory>src/main/resources</directory>
+                        <excludes>
+                            <exclude>application.yaml</exclude>
+                        </excludes>
+                    </resource>
+                </resources>
+
+                <plugins>
+                    <plugin>
+                        <!-- Use the jib-maven-plugin to build the container and push it up to a registry [without having to install Docker] -->
+                        <groupId>com.google.cloud.tools</groupId>
+                        <artifactId>jib-maven-plugin</artifactId>
+                        <version>3.4.4</version>
+
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <!-- Possible goals are build and dockerBuild   -->
+                                    <!--   The "build"       goal does not require docker / build the image and push it to a repo                 -->
+                                    <!--   The "dockerBuild" goal requires docker         / build the image and push to the local daemon daemon   -->
+                                    <goal>dockerBuild</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+
+                        <configuration>
+                            <from>
+                                <!-- This source image runs linux with JDK 17.07 -->
+                                <image>eclipse-temurin:17.0.7_7-jdk@sha256:9dd6a19e4819b066aa2bd8e54d5988a49cca29736fe5447cb0a57daa975f8935</image>
+                            </from>
+
+                            <to>
+                                <!-- Specify the destination name in the AWS Container Registry -->
+                                <image>${aws.ecr.uri}:${aws.env.name}-${project.artifactId}-${project.version}</image>
+                            </to>
+
+
+                            <extraDirectories>
+                                <paths>
+                                    <path>
+                                        <!-- Copies everything from 'src/main/image_resources' into '/sync-service-/src/main/image_resources' on the container. -->
+                                        <from>src/main/image_resources</from>
+                                        <into>/sync-service/src/main/image_resources</into>
+                                    </path>
+                                </paths>
+                            </extraDirectories>
+
+                            <container>
+                                <jvmFlags>
+                                    <!-- When starting the container, tell Java where to find the application.yaml -->
+                                    <jvmFlag> -Dspring.config.location=/sync-service/src/main/image_resources/application.yaml</jvmFlag>
+                                </jvmFlags>
+                            </container>
+
+                        </configuration>
+
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+
+        <!--    B U I L D     I M A G E    A N D    P U S H        P R O F I L E      (for running this app in a container)  -->
+        <profile>
+            <id>buildImageAndPush</id>
+
+            <!-- When running this profile, do *NOT* include the src/main/resources/application.yaml in the build -->
+            <build>
+                <resources>
+                    <resource>
+                        <filtering>false</filtering>
+                        <directory>src/main/resources</directory>
+                        <excludes>
+                            <exclude>application.yaml</exclude>
+                        </excludes>
+                    </resource>
+                </resources>
+
+                <plugins>
+                    <plugin>
+                        <!-- Use the jib-maven-plugin to build the container and push it up to a registry [without having to install Docker] -->
+                        <groupId>com.google.cloud.tools</groupId>
+                        <artifactId>jib-maven-plugin</artifactId>
+                        <version>3.4.4</version>
+
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <!-- Possible goals are build and dockerBuild   -->
+                                    <!--   The "build"       goal does not require docker / build the image and push it to a repo                 -->
+                                    <!--   The "dockerBuild" goal requires docker         / build the image and push to the local daemon daemon   -->
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+
+                        <configuration>
+                            <from>
+                                <!-- Define the source image that will be executed            -->
+                                <!-- See https://hub.docker.com/_/eclipse-temurin/tags        -->
+
+                                <!-- This source image runs linux with JDK 17.07 -->
+                                <image>eclipse-temurin:17.0.7_7-jdk@sha256:9dd6a19e4819b066aa2bd8e54d5988a49cca29736fe5447cb0a57daa975f8935</image>
+                            </from>
+
+                            <to>
+                                <!-- Specify the destination name in the AWS Container Registry -->
+                                <image>${aws.ecr.uri}:${aws.env.name}-${project.artifactId}-${project.version}</image>
+                            </to>
+
+
+                            <extraDirectories>
+                                <paths>
+                                    <path>
+                                        <!-- Copies everything from 'src/main/image_resources' into '/sync-service-/src/main/image_resources' on the container. -->
+                                        <from>src/main/image_resources</from>
+                                        <into>/sync-service/src/main/image_resources</into>
+                                    </path>
+                                </paths>
+                            </extraDirectories>
+
+                            <container>
+                                <jvmFlags>
+                                    <!-- When starting the container, tell Java where to find the application.yaml -->
+                                    <jvmFlag> -Dspring.config.location=/sync-service/src/main/image_resources/application.yaml</jvmFlag>
+                                </jvmFlags>
+                            </container>
+
+                        </configuration>
+
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+
+        <profile>
+            <!-- D E F A U L T       M A V E N      P R O F I L E -->
+            <id>defaultProfile</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <!-- When running any other build profile, include *ALL* files from the sync/src/main/resources into the JAR file -->
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>false</filtering>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+
+    </profiles>
+
 
 </project>

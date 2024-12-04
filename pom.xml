@@ -26,6 +26,12 @@
     <!-- Tell Maven to compile for Java 17 -->
     <maven.compiler.release>17</maven.compiler.release>
     <maven.compiler.verbose>false</maven.compiler.verbose>
+
+    <!-- Specify where the URI for the Amazon Container Registry -->
+    <aws.ecr.uri>524647912468.dkr.ecr.us-east-1.amazonaws.com/apps/app16</aws.ecr.uri>
+
+    <!-- Specify the AWS environment name -->
+    <aws.env.name>dev</aws.env.name>
   </properties>
 
 
@@ -84,4 +90,33 @@
       </plugin>
     </plugins>
   </build>
+
+
+  <profiles>
+    <profile>
+      <!--    B U I L D     I M A G E      P R O F I L E      (for running this app in a container)  -->
+      <id>buildImage</id>
+
+      <modules>
+        <module>common-backend</module>
+        <module>backend</module>
+        <module>frontend</module>
+        <module>sync-service</module>
+      </modules>
+    </profile>
+
+    <profile>
+      <!--    B U I L D     I M A G E    A N D    P U S H        P R O F I L E     (for running this app in a container)  -->
+      <id>buildImageAndPush</id>
+
+      <modules>
+        <module>common-backend</module>
+        <module>backend</module>
+        <module>frontend</module>
+        <module>sync-service</module>
+      </modules>
+    </profile>
+  </profiles>
+
+
 </project>

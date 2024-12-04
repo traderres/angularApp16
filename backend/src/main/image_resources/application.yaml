@@ -1,0 +1,114 @@
+###############################################################################
+# application.yaml   (used when running in a container)
+###############################################################################
+name: app16
+server.servlet.context-path: /app16
+server.port: 8080
+
+
+
+# Disable cors check because we are running in local dev mode
+# NOTE:  order is important.  Make sure disable.cors comes *AFTER* you set the profile
+disable.cors: true
+
+
+# Show Exception info to local developers
+exception_handler.return_dev_info: false
+
+
+##########################################################
+# Database Settings
+##########################################################
+app.datasource:
+  driver-class-name: org.postgresql.Driver
+  url: jdbc:postgresql://${POSTGRES_HOSTNAME}/${POSTGRES_DB_NAME}
+  username: ${POSTGRES_DB_USERNAME}
+  password: ${POSTGRES_DB_PASSWORD}
+  schema: ${POSTGRES_SCHEMA_NAME}
+  maxPoolSize: ${POSTGRES_POOL_SIZE:20}
+  database-name: ${POSTGRES_DB_NAME}
+  flyway-migrate-on-startup: true
+
+
+###########################################################
+# ElasticSearch Settings
+##########################################################
+es:
+  url: ${ES_URL}
+  ssl_enabled: true
+  key-store: ${INCOMING_KEYSTORE_FILEPATH}
+  key-store-password:  ${INCOMING_KEYSTORE_PASSWORD}
+  key-store-type: JKS
+  trust-store:  ${INCOMING_TRUSTSTORE_FILEPATH}
+  trust-store-password: ${INCOMING_TRUSTSTORE_PASSWORD}
+  trust-store-type: JKS
+  authentication.principal: ${ES_USERNAME}
+  authentication.password:  ${ES_PASSWORD}
+
+
+##########################################################
+# Security & SSL Settings
+#
+# Set the security mode to "keycloak" so it authenticates against keycloak
+##########################################################
+security.mode: keycloak    # Possible values are localdev, citadel, and keycloak / set to keycloak to use keycloak authentication
+
+server:
+    ssl:
+      key-store: ${INCOMING_KEYSTORE_FILEPATH}
+      key-store-password: ${INCOMING_KEYSTORE_PASSWORD}
+      key-store-type: JKS
+      client-auth: need
+      trust-store: ${INCOMING_TRUSTSTORE_FILEPATH}
+      trust-store-password: ${INCOMING_TRUSTSTORE_PASSWORD}
+      trust-store-type: JKS
+      enabled: true
+
+# Secure the cookies
+server.servlet.session.cookie.secure: true
+server.servlet.session.cookie.http-only: true
+
+server.use-forward-headers: true
+
+
+##############################################################################
+# Keycloak Settings for Spring Security
+#
+# The realm url is probably something like https://keycloak.rbr-tech.com:8444/realms/MyRealm
+##############################################################################
+spring.security.oauth2.client.registration.keycloak.client-id: ${KEYCLOAK_CLIENT_ID}
+spring.security.oauth2.client.registration.keycloak.client-secret: ${KEYCLOAK_CLIENT_SECRET}
+spring.security.oauth2.client.registration.keycloak.authorization-grant-type: authorization_code
+spring.security.oauth2.client.registration.keycloak.scope: openid,email,profile
+spring.security.oauth2.client.provider.keycloak.issuer-uri: ${KEYCLOAK_ISSUER_URI}
+spring.security.oauth2.client.provider.keycloak.user-name-attribute: preferred_username
+
+
+##########################################################
+# File Upload Settings
+##########################################################
+spring.servlet.multipart.enabled: true
+
+# Set the maximum file upload size for one file    (-1 is unlimited)
+spring.servlet.multipart.max-file-size: 300MB
+
+# Set the maximum request size
+# If a user uploads 5 files of 1 MB, then the entire request size is 5 MB   (-1 is unlimited)
+spring.servlet.multipart.max-request-size: 400MB
+
+
+##########################################################
+# Document Settings
+##########################################################
+root.dir: /data
+uploads.dir: ${root.dir}/uploads
+s3.enabled: false
+
+
+##########################################################
+# Virus Scanning Settings
+##########################################################
+virus-scanning.enabled: false
+qlack.util.clamav.host: localhost
+qlack.util.clamav.port: 3310
+qlack.util.clamav.socket.timeout: 100000
