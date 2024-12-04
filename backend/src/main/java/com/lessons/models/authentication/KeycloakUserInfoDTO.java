@@ -42,6 +42,7 @@ public class KeycloakUserInfoDTO {
         logger.debug("KeycloakUserInfoDTO() constructor started.  aOidcUser={}", aOidcUser.toString());
 
         this.grantedAuthorities = new ArrayList<>();
+        this.grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_APP16_SUPERVISOR"));
 
         // Get the roles from keycloak and put them into the object called oauth2RolesGranted
         Map<String, Object> realmAccessMap = (Map<String, Object>) aOidcUser.getAttributes().get("realm_access");
