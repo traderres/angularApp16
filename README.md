@@ -106,28 +106,30 @@ Procedures
     b. <a href="https://github.com/traderres/webClass/blob/master/learnAngular/lessons_Angular16/howToDebugExistingWebapp.txt">Setup debugging (so you can debug TypeScript and Java code)</a>
 
 
- 4. Build and push image to your Amazon ECR
-    a. Install AWS CLI
-       See https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-       1) Install the AWS CLI for Linux
-          unix> curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-          unix> unzip awscliv2.zip
-          unix> sudo ./aws/install
+ 4. Install AWS CLI
+    See https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+    a. Install the AWS CLI 
+
+       Install the AWS CLI for Linux
+       unix> curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+       unix> unzip awscliv2.zip
+       unix> sudo ./aws/install
     
-          *OR*
+       *OR*
     
-          Install the AWS CLI for Windows
-          terminal> msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
+       Install the AWS CLI for Windows
+       terminal> msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
     
 
-       2) Verify the AWS CLI is installed
-          unix> aws --version
+    b. Verify the AWS CLI is installed
+       unix> aws --version
     
-            You should see something like this:
+       You should see something like this:
                aws-cli/2.22.10 Python/3.12.6 Linux/5.14.0-427.42.1.el9_4.x86_64 exe/x86_64.rocky.9
     
-    b. Setup AWS Credentials
-       1)  Open the downloaded CSV file (dev.user_accessKeys.csv) in a text editor
+
+ 5. Setup AWS Credentials
+    a. Open the downloaded CSV file (dev.user_accessKeys.csv) in a text editor
 		   -- You should see a 2 line file
 
         	Access key ID,Secret access key
@@ -135,9 +137,9 @@ Procedures
 				^                        ^        ^
 				|                        |        |
 			Access Key Id          AWS Secret Access Key
-
-       2) Setup AWS credentials
-          unix> aws configure
+    
+    b. Setup AWS credentials
+       unix> aws configure
 
 		  AWS Access Key ID [None]:         <ENTER TEXT BEFORE THE COMMA (on line 2 of the CSV file)
 		  AWS Secret Access Key [None]:     <ENTER TEXT AFTER  THE COMMA (on line 2 of the CSV file)
@@ -146,16 +148,27 @@ Procedures
 		  Default output format [None]:     json
  
 
-     c. RUn the m script
-        In Windows
-        Terminal> scripts\m.bat dev1
+ 6. Use the scripts to build and push the webapp image up to the Amazon ECR
+    a. Build and push the webapp image to the Amazon ECR
+       In Windows
+       Terminal> scripts\m.bat dev1
 
-        *OR*
+       *OR*
 
-        In Unix
-        unix> chmod u+x  ./scripts/m.sh
-        unix> ./scripts/m.sh dev1
+       In Unix
+       unix> chmod u+x  ./scripts/m.sh
+       unix> ./scripts/m.sh dev1
 
- 
+
+    b. Build and push the sync-service image to the Amazon ECR
+       In Windows
+       Terminal> scripts\mclean.bat dev1
+
+       *OR*
+
+       In Unix
+       unix> chmod u+x  ./scripts/mclean.sh
+       unix> ./scripts/mclean.sh dev1
+   
 
 </pre>
