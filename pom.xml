@@ -7,13 +7,6 @@
   <artifactId>angularApp16</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <modules>
-    <module>frontend</module>
-    <module>backend</module>
-    <module>db-migrations</module>
-    <module>sync-service</module>
-    <module>common-backend</module>
-  </modules>
 
 
   <name>angularApp16</name>
@@ -93,29 +86,61 @@
 
 
   <profiles>
+
+    <!--    B U I L D     I M A G E      P R O F I L E      (for running this app in a container)  -->
     <profile>
-      <!--    B U I L D     I M A G E      P R O F I L E      (for running this app in a container)  -->
       <id>buildImage</id>
 
       <modules>
         <module>common-backend</module>
         <module>backend</module>
         <module>frontend</module>
-        <module>sync-service</module>
       </modules>
     </profile>
 
+
+    <!--    B U I L D     I M A G E    A N D    P U S H       W E B A P P    (for running this app in a container)  -->
     <profile>
-      <!--    B U I L D     I M A G E    A N D    P U S H        P R O F I L E     (for running this app in a container)  -->
-      <id>buildImageAndPush</id>
+     <id>buildAndPushImage</id>
 
       <modules>
         <module>common-backend</module>
         <module>backend</module>
         <module>frontend</module>
+      </modules>
+    </profile>
+
+
+    <!--    B U I L D     I M A G E    A N D    P U S H       S Y N C    S E R V I C E    (for running this app in a container)  -->
+    <profile>
+      <id>buildAndPushSyncService</id>
+
+      <modules>
+        <module>db-migrations</module>
+        <module>common-backend</module>
         <module>sync-service</module>
       </modules>
     </profile>
+
+
+
+    <!--    D E F A U L T        P R O F I L E           (for developers)  -->
+    <profile>
+      <id>default</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+
+      <modules>
+        <module>frontend</module>
+        <module>backend</module>
+        <module>db-migrations</module>
+        <module>sync-service</module>
+        <module>common-backend</module>
+      </modules>
+
+    </profile>
+
   </profiles>
 
 

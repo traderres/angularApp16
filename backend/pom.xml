@@ -426,11 +426,9 @@
     </profile>
 
 
-
-
     <!--    B U I L D     I M A G E    A N D     P U S H       P R O F I L E      (for running this app in a container)  -->
     <profile>
-      <id>buildImageAndPush</id>
+      <id>buildAndPushImage</id>
 
       <!-- When running this profile, do *NOT* include the src/main/resources/application.yaml in the build -->
       <build>
@@ -503,9 +501,8 @@
     </profile>
 
 
-
+    <!--    D E F A U L T       P R O F I L E     (include all files from backend/src/main/resources into the JAR file -->
     <profile>
-      <!-- When running any other build profile, include *ALL* files from the backend/src/main/resources into the JAR file -->
       <id>defaultProfile</id>
       <activation>
         <activeByDefault>true</activeByDefault>

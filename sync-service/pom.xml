@@ -315,9 +315,9 @@
         </profile>
 
 
-        <!--    B U I L D     I M A G E    A N D    P U S H        P R O F I L E      (for running this app in a container)  -->
+        <!--    B U I L D     I M A G E    A N D    P U S H       S Y N C    S E R V I C E      (for running this app in a container)  -->
         <profile>
-            <id>buildImageAndPush</id>
+            <id>buildAndPushSyncService</id>
 
             <!-- When running this profile, do *NOT* include the src/main/resources/application.yaml in the build -->
             <build>
@@ -390,9 +390,9 @@
         </profile>
 
 
+        <!-- D E F A U L T       M A V E N      P R O F I L E -->
         <profile>
-            <!-- D E F A U L T       M A V E N      P R O F I L E -->
-            <id>defaultProfile</id>
+             <id>defaultProfile</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
