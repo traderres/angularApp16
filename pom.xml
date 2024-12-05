@@ -20,8 +20,11 @@
     <maven.compiler.release>17</maven.compiler.release>
     <maven.compiler.verbose>false</maven.compiler.verbose>
 
-    <!-- Specify where the URI for the Amazon Container Registry -->
+    <!-- Specify the destination Amazon ECR (where we will upload containers to) -->
     <aws.ecr.uri>524647912468.dkr.ecr.us-east-1.amazonaws.com/apps/app16</aws.ecr.uri>
+
+    <!-- Specify the base image that has java 17 JRE -->
+    <aws.ecr.uri.java-base-image>524647912468.dkr.ecr.us-east-1.amazonaws.com/apps/infrastructure:openjdk17-slim-1.17</aws.ecr.uri.java-base-image>
 
     <!-- Specify the AWS environment name -->
     <aws.env.name>dev</aws.env.name>
