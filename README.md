@@ -106,4 +106,56 @@ Procedures
     b. <a href="https://github.com/traderres/webClass/blob/master/learnAngular/lessons_Angular16/howToDebugExistingWebapp.txt">Setup debugging (so you can debug TypeScript and Java code)</a>
 
 
+ 4. Build and push image to your Amazon ECR
+    a. Install AWS CLI
+       See https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+       1) Install the AWS CLI for Linux
+          unix> curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unix> unzip awscliv2.zip
+          unix> sudo ./aws/install
+    
+          *OR*
+    
+          Install the AWS CLI for Windows
+          terminal> msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
+    
+
+       2) Verify the AWS CLI is installed
+          unix> aws --version
+    
+            You should see something like this:
+               aws-cli/2.22.10 Python/3.12.6 Linux/5.14.0-427.42.1.el9_4.x86_64 exe/x86_64.rocky.9
+    
+    b. Setup AWS Credentials
+       1)  Open the downloaded CSV file (dev.user_accessKeys.csv) in a text editor
+		   -- You should see a 2 line file
+
+        	Access key ID,Secret access key
+        	ABCDEFGHIJKLMN,123456789123456789/123456789456123
+				^                        ^        ^
+				|                        |        |
+			Access Key Id          AWS Secret Access Key
+
+       2) Setup AWS credentials
+          unix> aws configure
+
+		  AWS Access Key ID [None]:         <ENTER TEXT BEFORE THE COMMA (on line 2 of the CSV file)
+		  AWS Secret Access Key [None]:     <ENTER TEXT AFTER  THE COMMA (on line 2 of the CSV file)
+		  Default region name [None]:       If using aws-gov-cloud, then probably use your region   -- e.g., us-gov-west-1
+		                                    If using aws-residential, then probably use your region -- e.g., us-east-1
+		  Default output format [None]:     json
+ 
+
+     c. RUn the m script
+        In Windows
+        Terminal> scripts\m.bat dev1
+
+        *OR*
+
+        In Unix
+        unix> chmod u+x  ./scripts/m.sh
+        unix> ./scripts/m.sh dev1
+
+ 
+
 </pre>
