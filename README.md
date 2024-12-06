@@ -148,27 +148,25 @@ Procedures
 		  Default output format [None]:     json
  
 
- 6. Use the scripts to build and push the webapp image up to the Amazon ECR
-    a. Build and push the webapp image to the Amazon ECR
-       In Windows
-       Terminal> scripts\m.bat dev1
+ 6. Build and push the webapp image to the Amazon ECR
+    In Windows
+    Terminal> scripts\buildPushWebApp.bat dev1
 
-       *OR*
+    *OR*
 
-       In Unix
-       unix> chmod u+x  ./scripts/m.sh
-       unix> ./scripts/m.sh dev1
+    In Unix
+    unix> chmod u+x  ./scripts/buildPushWebApp.sh
+    unix> ./scripts/buildPushWebApp.sh dev1
 
 
-    b. Build and push the sync-service image to the Amazon ECR
-       In Windows
-       Terminal> scripts\mclean.bat dev1
+ 7. Build and push the sync-service image to the Amazon ECR
+    In Windows
+    Terminal> scripts\buildPushSync.bat dev1
 
-       *OR*
+    *OR*
 
-       In Unix
-       unix> chmod u+x  ./scripts/mclean.sh
-       unix> ./scripts/mclean.sh dev1
-   
+    In Unix
+     unix> chmod u+x  ./scripts/buildPushSync.sh
+     unix> ./scripts/buildPushSync.sh dev1
 
 </pre>

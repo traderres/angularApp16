@@ -1,6 +1,6 @@
 #!/bin/bash
 ##########################################################################################################
-# Filename:  mclean.sh
+# Filename:  buildPushSync.sh
 ##########################################################################################################
 # Purpose:
 #   Build and push the Sync Service image to the Amazon ECR
@@ -12,8 +12,8 @@
 #      unix> mvn -Djib.to.auth.username=AWS -Djib.to.auth.password=$PASSWORD -Djib.from.auth.username=AWS -Djib.from.auth.password=$PASSWORD -Daws.env.name=dev clean package -Pprod -PbuildAndPushSyncService
 #
 # Usage:
-#    unix> chmod u+x scripts/mclean.sh               # Make the script executable
-#    unix> scripts/mclean.sh dev1
+#    unix> chmod u+x scripts/buildPushSync.sh               # Make the script executable
+#    unix> scripts/buildPushSync.sh dev1
 ##########################################################################################################
 
 if [ "$1" != "dev1" ] && [ "$1" != "dev2" ] && [ "$1" != "demo" ]; then

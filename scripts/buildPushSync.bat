@@ -1,6 +1,6 @@
 @Echo off
 REM ##########################################################################################
-REM # Filename:  mclean.bat
+REM # Filename:  buildPushSync.bat
 REM #
 REM # Purpose:   Build and Deploy the Sync Service to the Amazon ECR
 REM #

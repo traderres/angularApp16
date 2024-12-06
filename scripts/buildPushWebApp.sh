@@ -1,6 +1,6 @@
 #!/bin/bash
 ##########################################################################################################
-# Filename:  mclean.sh
+# Filename:  buildPushWebApp.sh
 ##########################################################################################################
 # Purpose:
 #   Build and push the Web App image to the Amazon ECR
@@ -12,8 +12,8 @@
 #      unix> mvn -Djib.to.auth.username=AWS -Djib.to.auth.password=$PASSWORD -Djib.from.auth.username=AWS -Djib.from.auth.password=$PASSWORD -Daws.env.name=dev clean package -Pprod -PbuildAndPushImage
 #
 # Usage:
-#    unix> chmod u+x scripts/m.sh               # Make the script executable
-#    unix> scripts/m.sh dev1
+#    unix> chmod u+x scripts/buildPushWebApp.sh               # Make the script executable
+#    unix> scripts/buildPushWebApp.sh dev1
 ##########################################################################################################
 
 if [ "$1" != "dev1" ] && [ "$1" != "dev2" ] && [ "$1" != "demo" ]; then

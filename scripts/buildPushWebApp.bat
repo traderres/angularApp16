@@ -1,8 +1,8 @@
 @Echo off
 REM ##########################################################################################
-REM # Filename:  m.bat
+REM # Filename:  buildPushWebApp.bat
 REM #
-REM # Purpose:   Build and Deploy the webapp to the Amazon ECR
+REM # Purpose:   Build and Push the webapp to the Amazon ECR
 REM #
 REM # Design
 REM #  1) Generate an AWS ECR token
