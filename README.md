@@ -148,25 +148,23 @@ Procedures
 		  Default output format [None]:     json
  
 
- 6. Build and push the webapp image to the Amazon ECR
+ 6. Build and Push the image up to Amazon ECR
     In Windows
-    Terminal> scripts\buildPushWebApp.bat dev1
+		a. Build and Push the webapp to the Amazon ECR
+		   terminal> cd intelliJProjects/angularApp16
+		   terminal> scripts/buildPushWebApp dev1
 
-    *OR*
+		b. Build and Push the sync-service to the Amazon ECR
+		   terminal> scripts/buildPushSync dev1
+
 
     In Unix
-    unix> chmod u+x  ./scripts/buildPushWebApp.sh
-    unix> ./scripts/buildPushWebApp.sh dev1
+		a. Build and Push the webapp to the Amazon ECR
+		   terminal> cd intelliJProjects/angularApp16
+		   terminal> chmod u+x scripts/buildPushWebApp.sh
+		   terminal> scripts/buildPushWebApp.sh dev1
 
-
- 7. Build and push the sync-service image to the Amazon ECR
-    In Windows
-    Terminal> scripts\buildPushSync.bat dev1
-
-    *OR*
-
-    In Unix
-     unix> chmod u+x  ./scripts/buildPushSync.sh
-     unix> ./scripts/buildPushSync.sh dev1
-
+		b. Build and Push the sync-service to the Amazon ECR
+		   terminal> chmod u+x scripts/buildPushSync.sh
+		   terminal> scripts/buildPushSync.sh dev1
 </pre>
