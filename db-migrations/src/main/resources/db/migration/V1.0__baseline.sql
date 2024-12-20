@@ -61,6 +61,7 @@ create table users
     created_date         timestamp     not null,
     last_login_date      timestamp     not null,
     last_updated_date    timestamp     not null,
+    acknowledgement_date timestamp with time zone  null,
     primary key (id)
 );
 comment on table users is 'The Users table holds information about each user';
@@ -87,6 +88,7 @@ create table users_aud
     created_date         timestamp         null,
     last_login_date      timestamp         null,
     last_updated_date    timestamp         null,
+    acknowledgement_date timestamp with time zone  null,
     timestamp            timestamp     not null,
     username             varchar(100)  not null,
     audit_type           integer       not null, --0 create, 1 update, 2 delete

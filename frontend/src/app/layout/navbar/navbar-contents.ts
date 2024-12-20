@@ -27,7 +27,27 @@ export const navbarContents: NavGroup[] = [
 			{
 				navItemName: "Sample Page 2",
 				navItemUrl: Constants.SAMPLE_PAGE_ROUTE_2,
-			}
+			},
+      {
+        navItemName: "Reports Grid View",
+        navItemUrl: Constants.REPORTS_GRID_VIEW_ROUTE,
+      },
+      {
+        navItemName: "My Searches",
+        navItemUrl: Constants.MY_SEARCHES_GRID_ROUTE,
+      },
+      {
+        navItemName: "Grid Page w/Filters",
+        navItemUrl: Constants.GRID_PAGE_WITH_FILTERS_ROUTE,
+      },
+      {
+        navItemName: "Grid Page w/Sorting",
+        navItemUrl: Constants.GRID_PAGE_WITH_SORTING_ROUTE,
+      },
+      {
+        navItemName: "Grid Page w/Cell Renderer",
+        navItemUrl: Constants.GRID_PAGE_WITH_CELL_RENDERER_ROUTE,
+      }
 		],
 	},
 	{

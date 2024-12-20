@@ -85,6 +85,11 @@ insert into uicontrols(id, name) values(3002, 'page/sample-page');
 insert into uicontrols(id, name) values(3003, 'page/sample-page-2');
 insert into uicontrols(id, name) values(3004, 'page/admin/list-exceptions');
 insert into uicontrols(id, name) values(3005, 'page/admin/user-admin');
+insert into uicontrols(id, name) values(3006, 'page/reports/grid-view');
+insert into uicontrols(id, name) values(3007, 'page/reports/my-searches');
+insert into uicontrols(id, name) values(3008, 'page/grid-page-with-filters');
+insert into uicontrols(id, name) values(3009, 'page/grid-page-with-sorting');
+insert into uicontrols(id, name) values(3010, 'page/grid-page-with-cell-renderer');
 
 
 -----------------------------------------------------------------------------

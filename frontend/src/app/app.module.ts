@@ -42,6 +42,13 @@ import { ListExceptionsComponent } from './features/admin/list-exceptions/list-e
 import { UserAdminComponent } from './features/admin/user-admin/user-admin.component';
 import { UserSettingsComponent } from './features/user-settings/user-settings.component';
 import {PageGuard} from "./guards/page.guard";
+import {AgGridModule} from "ag-grid-angular";
+import { ReportsGridViewComponent } from './features/reports-grid-view/reports-grid-view.component';
+import { MySearchesGridComponent } from './features/my-searches-grid/my-searches-grid.component';
+import { GridPageWithFiltersComponent } from './features/grid-page-with-filters/grid-page-with-filters.component';
+import { GridPageWithSortingComponent } from './features/grid-page-with-sorting/grid-page-with-sorting.component';
+import { GridPageWithCellRendererComponent } from './features/grid-page-with-cell-renderer/grid-page-with-cell-renderer.component';
+import { RegistrationStatusCustomRendererComponent } from './features/registration-status-custom-renderer/registration-status-custom-renderer.component';
 
 // Setup the routes.  If no route is found, then take the user to the NotFoundComponent
 // NOTE:  The **ORDER** of these routes matters.  The NotFoundComponent should always be last
@@ -51,6 +58,11 @@ const appRoutes: Routes = [
   { path:  Constants.LIST_EXCEPTIONS_ROUTE,   component: ListExceptionsComponent,   canActivate: [PageGuard.canActivate ] },
   { path:  Constants.USER_ADMIN_ROUTE,        component: UserAdminComponent,        canActivate: [PageGuard.canActivate ] },
   { path:  Constants.USER_SETTINGS_ROUTE,     component: UserSettingsComponent,     canActivate: [PageGuard.canActivate ] },
+  { path:  Constants.REPORTS_GRID_VIEW_ROUTE, component: ReportsGridViewComponent,  canActivate: [PageGuard.canActivate ] },
+  { path:  Constants.MY_SEARCHES_GRID_ROUTE , component: MySearchesGridComponent,   canActivate: [PageGuard.canActivate ] },
+  { path:  Constants.GRID_PAGE_WITH_FILTERS_ROUTE , component: GridPageWithFiltersComponent,   canActivate: [PageGuard.canActivate ] },
+  { path:  Constants.GRID_PAGE_WITH_SORTING_ROUTE , component: GridPageWithSortingComponent,   canActivate: [PageGuard.canActivate ] },
+  { path:  Constants.GRID_PAGE_WITH_CELL_RENDERER_ROUTE , component: GridPageWithCellRendererComponent,   canActivate: [PageGuard.canActivate ] },
 
   { path:  '',                                component: WelcomeComponent,          canActivate: [PageGuard.canActivate ] },
   { path:  '**',                              component: NotFoundComponent }
@@ -68,9 +80,16 @@ const appRoutes: Routes = [
     NavbarCollapsedComponent,
     ListExceptionsComponent,
     UserAdminComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    ReportsGridViewComponent,
+    MySearchesGridComponent,
+    GridPageWithFiltersComponent,
+    GridPageWithSortingComponent,
+    GridPageWithCellRendererComponent,
+    RegistrationStatusCustomRendererComponent,
   ],
   imports: [
+    AgGridModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -1,0 +1,30 @@
+<div class="m-2.5">
+
+  <div class="grid grid-cols-2">
+      <div>
+        <span class="text-xl">Reports Grid View</span>
+      </div>
+
+      <div class="flex place-content-end">
+         Help
+      </div>
+  </div>
+
+  <div class="mt-2.5">
+
+      <div class="overflow-y-auto" style="height: calc(100vh - 145px)">
+
+        <!-- A C T U A L        G R I D      -->
+        <ag-grid-angular class="w-full h-full ag-theme-alpine"
+          [gridOptions]="this.gridOptions"
+          [columnDefs]="this.columnDefs"
+          [defaultColDef]="this.defaultColumnDef"
+          [rowData]="this.rowData"
+        ></ag-grid-angular>
+
+      </div>
+
+  </div>
+
+
+</div>

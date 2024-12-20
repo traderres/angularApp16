@@ -11,6 +11,12 @@ export enum Constants {
   USER_SETTINGS_ROUTE                        = "page/user-settings",
   LIST_EXCEPTIONS_ROUTE                      = "page/admin/list-exceptions",
   USER_ADMIN_ROUTE                           = "page/admin/user-admin",
+  REPORTS_GRID_VIEW_ROUTE                    = "page/reports/grid-view",
+  MY_SEARCHES_GRID_ROUTE                     = "page/reports/my-searches",
+  GRID_PAGE_WITH_FILTERS_ROUTE               = "page/grid-page-with-filters",
+  GRID_PAGE_WITH_SORTING_ROUTE               = "page/grid-page-with-sorting",
+  GRID_PAGE_WITH_CELL_RENDERER_ROUTE         = "page/grid-page-with-cell-renderer",
+
 
   // Preference Names
   NAVBAR_EXTENDED_STATE_PREFERENCE_NAME      = "navbar_extended_state", // Preference name for navbar mode (extended/collapsed)
