@@ -16,6 +16,8 @@ export enum Constants {
   GRID_PAGE_WITH_FILTERS_ROUTE               = "page/grid-page-with-filters",
   GRID_PAGE_WITH_SORTING_ROUTE               = "page/grid-page-with-sorting",
   GRID_PAGE_WITH_CELL_RENDERER_ROUTE         = "page/grid-page-with-cell-renderer",
+  GRID_PAGE_WITH_CELL_BUTTONS_ROUTE          = "page/grid-page-with-cell-buttons",
+  GRID_PAGE_WITH_FILTER_SEARCH_BOX_ROUTE     = "page/grid-page-with-filter-search-box",
 
 
   // Preference Names

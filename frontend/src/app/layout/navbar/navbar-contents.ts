@@ -47,6 +47,14 @@ export const navbarContents: NavGroup[] = [
       {
         navItemName: "Grid Page w/Cell Renderer",
         navItemUrl: Constants.GRID_PAGE_WITH_CELL_RENDERER_ROUTE,
+      },
+      {
+        navItemName: "Grid Page w/Cell Buttons",
+        navItemUrl: Constants.GRID_PAGE_WITH_CELL_BUTTONS_ROUTE,
+      },
+      {
+        navItemName: "Grid Page w/Filter Search Box",
+        navItemUrl: Constants.GRID_PAGE_WITH_FILTER_SEARCH_BOX_ROUTE,
       }
 		],
 	},

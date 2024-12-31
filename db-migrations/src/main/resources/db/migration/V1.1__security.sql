@@ -90,6 +90,8 @@ insert into uicontrols(id, name) values(3007, 'page/reports/my-searches');
 insert into uicontrols(id, name) values(3008, 'page/grid-page-with-filters');
 insert into uicontrols(id, name) values(3009, 'page/grid-page-with-sorting');
 insert into uicontrols(id, name) values(3010, 'page/grid-page-with-cell-renderer');
+insert into uicontrols(id, name) values(3011, 'page/grid-page-with-cell-buttons');
+insert into uicontrols(id, name) values(3012, 'page/grid-page-with-filter-search-box');
 
 
 -----------------------------------------------------------------------------

@@ -49,6 +49,9 @@ import { GridPageWithFiltersComponent } from './features/grid-page-with-filters/
 import { GridPageWithSortingComponent } from './features/grid-page-with-sorting/grid-page-with-sorting.component';
 import { GridPageWithCellRendererComponent } from './features/grid-page-with-cell-renderer/grid-page-with-cell-renderer.component';
 import { RegistrationStatusCustomRendererComponent } from './features/registration-status-custom-renderer/registration-status-custom-renderer.component';
+import { GridPageWithButtonsComponent } from './features/grid-page-with-buttons/grid-page-with-buttons.component';
+import { ReportGridActionCellRendererComponent } from './features/grid-page-with-buttons/report-grid-action-cell-renderer/report-grid-action-cell-renderer.component';
+import { GridPageWithFilterSearchBoxComponent } from './features/grid-page-with-filter-search-box/grid-page-with-filter-search-box.component';
 
 // Setup the routes.  If no route is found, then take the user to the NotFoundComponent
 // NOTE:  The **ORDER** of these routes matters.  The NotFoundComponent should always be last
@@ -63,6 +66,8 @@ const appRoutes: Routes = [
   { path:  Constants.GRID_PAGE_WITH_FILTERS_ROUTE , component: GridPageWithFiltersComponent,   canActivate: [PageGuard.canActivate ] },
   { path:  Constants.GRID_PAGE_WITH_SORTING_ROUTE , component: GridPageWithSortingComponent,   canActivate: [PageGuard.canActivate ] },
   { path:  Constants.GRID_PAGE_WITH_CELL_RENDERER_ROUTE , component: GridPageWithCellRendererComponent,   canActivate: [PageGuard.canActivate ] },
+  { path:  Constants.GRID_PAGE_WITH_CELL_BUTTONS_ROUTE,   component: GridPageWithButtonsComponent,   canActivate: [PageGuard.canActivate ] },
+  { path:  Constants.GRID_PAGE_WITH_FILTER_SEARCH_BOX_ROUTE,   component: GridPageWithFilterSearchBoxComponent,   canActivate: [PageGuard.canActivate ] },
 
   { path:  '',                                component: WelcomeComponent,          canActivate: [PageGuard.canActivate ] },
   { path:  '**',                              component: NotFoundComponent }
@@ -87,6 +92,9 @@ const appRoutes: Routes = [
     GridPageWithSortingComponent,
     GridPageWithCellRendererComponent,
     RegistrationStatusCustomRendererComponent,
+    GridPageWithButtonsComponent,
+    ReportGridActionCellRendererComponent,
+    GridPageWithFilterSearchBoxComponent,
   ],
   imports: [
     AgGridModule,

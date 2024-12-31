@@ -1,0 +1,107 @@
+<div class="bg-backDropColor m-2.5">
+
+    <div class="grid grid-cols-2">
+      <div>
+        <span class="text-xl">Grid Page with Filter Search Box</span>
+      </div>
+
+      <div class="flex place-content-end">
+        Help
+      </div>
+    </div>
+
+
+    <!--  S E A R C H       B O X       L I N E   -->
+    <div class="mt-2.5 flex flex-row w-full h-[64px] relative flex-shrink-0">
+    <!-- Tab -->
+    <div class="flex flex-row items-center absolute bg-white rounded-t px-3 py-2 border-x border-t border-borderColor h-full w-[150px] top-[1px]">
+      <div class="w-[5px] h-full float-left bg-[#1E3059] rounded mr-2.5 flex-shrink-0"></div>
+      <!-- Note: Negative margin here because of line height on the numbers -->
+      <div class="flex flex-col pt-2">
+        <div class="h-[30px] w-[125px] flex place-content-start">
+          <!-- Title (count) -->
+          <ng-container>
+            <!-- Display Total -->
+            <span class="text-2xl font-extrabold">{{ this.totalRecordsOnPageLoad }}</span>
+          </ng-container>
+        </div>
+
+        <div class="h-[30px] flex place-content-start">
+          <!-- Sub Title (context) -->
+          <span>Total Records</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Searchbar Container -->
+    <div class="h-full w-full py-2 flex flex-row pl-[158px]">
+
+      <!-- Searchbar -->
+      <div class="w-full bg-white rounded border-borderColor border justify-center flex flex-row gap-2.5 pl-3.5 overflow-hidden">
+
+        <!-- Searchbar Input -->
+        <input matInput type="text"
+               [(ngModel)]="this.rawSearchQuery"
+               (input)="this.runClientGridSearch(this.rawSearchQuery)"
+               class="w-full outline-none"
+               placeholder="Search..."
+               autocomplete="off"
+               title="Search Box"
+               style="background: white"
+               aria-label="Search Box"/>
+
+        <!-- Clear Icon -->
+        <span class="flex clickable items-center justify-center" title="Clear Search" aria-label="Clear Search" (click)="this.clearSearch()">
+                    <i class="fa-solid fa-xmark-large"></i>
+            </span>
+
+        <!-- Search Icon -->
+        <div class="bg-blue-950 rounded-r w-[42px] items-center justify-center clickable text-white flex h-full" aria-label="Search" title="Search">
+          <i class="fa-regular fa-search"></i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+    <!--  G R I D      B U T T O N S         -->
+    <div class="flex flex-row w-full bg-white rounded-tr h-10 flex-shrink-0 items-center border-x border-t border-borderColor px-3">
+
+        <!-- Settings button -->
+        <button [matMenuTriggerFor]="gridMenu" class="-ml-1"
+                type="button" title="Settings" aria-label="Settings">
+          <div class="flex flex-row gap-2 items-center">
+            <i class="fa-xl fa-solid fa-sliders"></i>
+            <span class="font-extrabold">Settings</span>
+          </div>
+        </button>
+
+        <!-- Pop-up menu for the 'Settings' button -->
+        <mat-menu #gridMenu="matMenu">
+          <button mat-menu-item type="button" title="Reset Grid" aria-label="Reset Grid">
+            Reset Grid
+          </button>
+        </mat-menu>
+
+        <div class="flex flex-grow place-content-end">
+          <!-- Show the Total Number of Matches -->
+          <span class="italic text-primary font-extrabold">{{ this.totalFilteredMatchesAndLabel }}</span>
+        </div>
+  </div>
+
+
+    <!--  G R I D      I S    H E R E     -->
+    <div class="overflow-y-auto" style="height: calc(100vh - 247px)">
+      <ag-grid-angular
+        class="ag-theme-balham w-full h-full"
+        [gridOptions]="this.gridOptions"
+        [columnDefs]="this.columnDefs"
+        [defaultColDef]="this.defaultColumnDef"
+        (gridReady)="this.onGridReady($event)"
+      ></ag-grid-angular>
+    </div>
+
+
+</div>
+
