@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@use '@angular/material' as mat;            // Make this the *FIRST* line in the styles.scss
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -365,4 +365,26 @@ button.disabled-button {
   cursor: not-allowed;
   pointer-events: none;
   display: none
+}
+
+.app-form-label {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  display: block;
+}
+
+mat-datepicker-toggle.max-reduced-calendar .mat-mdc-icon-button.mat-mdc-button-base {
+  /* Reduce the height of the date picker box that has class="max-reduced-calendar" */
+  padding: 0 8px;
+  --mdc-icon-button-state-layer-size: 36px !important;
+}
+
+
+.max-reduced-density {
+  /* Tell the form field to use less padding.  Angular Material ranges from 0 (normal) to -5 (less padding)  */
+  @include mat.form-field-density(-5);
 }

@@ -85,6 +85,18 @@ insert into uicontrols(id, name) values(3002, 'page/sample-page');
 insert into uicontrols(id, name) values(3003, 'page/sample-page-2');
 insert into uicontrols(id, name) values(3004, 'page/admin/list-exceptions');
 insert into uicontrols(id, name) values(3005, 'page/admin/user-admin');
+insert into uicontrols(id, name) values(3006, 'page/grid-page-too-many-rows');
+insert into uicontrols(id, name) values(3007, 'page/grid-page-with-custom-filter');
+insert into uicontrols(id, name) values(3008, 'page/tab-group-page');
+insert into uicontrols(id, name) values(3009, 'page/dashboard');
+insert into uicontrols(id, name) values(3010, 'page/dashboard/pie-chart');
+insert into uicontrols(id, name) values(3011, 'page/dashboard/column-chart-drill-down');
+insert into uicontrols(id, name) values(3012, 'page/dashboard/zommable-times-series');
+insert into uicontrols(id, name) values(3013, 'page/dashboard/usa-map');
+insert into uicontrols(id, name) values(3014, 'page/dashboard/gauge');
+insert into uicontrols(id, name) values(3015, 'page/chips-with-textbox');
+insert into uicontrols(id, name) values(3016, 'page/chips-with-autocomplete');
+insert into uicontrols(id, name) values(3017, 'page/grid-page-with-chip-selection');
 
 
 -----------------------------------------------------------------------------

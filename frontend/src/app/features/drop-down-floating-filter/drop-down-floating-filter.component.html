@@ -1,0 +1,7 @@
+<mat-select panelWidth="" style="width: 100%" [disableRipple]=true placeholder="Is Locked? "
+            [(ngModel)]="this.currentValue"
+            (selectionChange)="this.onSelectionChanged()">
+  <mat-option [value]=null>All Users</mat-option>
+  <mat-option [value]="'true'">Locked Users</mat-option>
+  <mat-option [value]="'false'">Unlocked Users</mat-option>
+</mat-select>

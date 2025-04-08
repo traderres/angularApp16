@@ -1,0 +1,54 @@
+<div class="m-2.5">
+
+  <div class="grid grid-rows-2">
+    <div>
+      <span class="text-xl">Tab Group Page</span>
+    </div>
+
+    <div class="flex place-content-end">
+      Help
+    </div>
+  </div>
+
+  <div>
+
+
+    <div class="mx-2.5">
+
+      <mat-tab-group class="mt-2.5">
+
+        <!-- U S E R     P R O F I L E       T A B -->
+        <mat-tab label="User Profile">
+
+          <!-- Lazy Loading Turned On.  This tab is reloaded *EVERY* time is is selected -->
+          <ng-template matTabContent>
+            <app-tab-user-profile></app-tab-user-profile>
+          </ng-template>
+
+        </mat-tab>
+
+
+        <!-- C O M P L E T E D       A C T I O N S      T A B -->
+        <mat-tab label="Completed Actions">
+
+          <!-- Lazy Loading Turned On.  This tab is reloaded *EVERY* time is is selected -->
+          <ng-template matTabContent>
+            <app-tab-completed-actions></app-tab-completed-actions>
+          </ng-template>
+
+        </mat-tab>
+
+
+        <!-- W O R K - I N - P R O G R E S S     A C T I O N S     T A B -->
+        <mat-tab label="Work-in-Progress Actions">
+
+          <!-- Lazy Loading Turned On.  This tab is reloaded *EVERY* time is is selected -->
+          <ng-template matTabContent>
+            <app-tab-work-in-progress-actions></app-tab-work-in-progress-actions>
+          </ng-template>
+        </mat-tab>
+
+      </mat-tab-group>
+  </div>
+
+</div>

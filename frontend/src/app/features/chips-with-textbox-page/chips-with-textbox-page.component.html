@@ -1,0 +1,110 @@
+<form [formGroup]="this.myForm" novalidate autocomplete="off">
+
+  <div class="m-2.5">
+    <div class="grid grid-cols-2">
+      <div><span class="text-xl">Add Country Page</span></div>
+
+      <div class="flex place-content-end">
+        <!-- Help Button -->
+        <button mat-raised-button type="button" title="Help" aria-label="Help">Help</button>
+      </div>
+    </div>
+
+    <div class="overflow-y-auto mt-2.5" style="height: calc(100vh - 150px)">
+
+      <div class="flex flex-col gap-y-2.5">
+
+        <div>
+          <!-- Three Character Country Code Text Box -->
+          <span class="app-form-label">Three Character Country Code</span>
+          <mat-form-field class="max-reduced-density [w-200px]">
+            <input type="text" matInput formControlName="countryName" title="Three Character Country Code"/>
+
+            <mat-error>This field is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <!-- Country Name Text Box-->
+          <span class="app-form-label">Enter Country Name</span>
+          <mat-form-field class="max-reduced-density w-[400px]">
+            <input type="text" matInput formControlName="threeCharCode"  title="Enter Country Name"/>
+
+            <mat-error>This field is required</mat-error>
+          </mat-form-field>
+        </div>
+
+
+        <div>
+          <!-- A L I A S E S      T E X T     B O X -->
+          <span class="app-form-label">Enter Aliases</span>
+          <mat-form-field class="max-reduced-density w-3/4">
+
+            <mat-chip-grid #chipGrid aria-label="Enter country aliases" formControlName="aliases">
+
+              <!-- Loop through the array of aliases, creating chips -->
+              <mat-chip-row
+                *ngFor="let alias of this.aliases; let index=index"
+                (removed)="this.removeAlias(index)">
+
+                <!-- The chip text -->
+                {{ alias }}
+
+                <!-- Add a button to remove this chip -->
+                <button matChipRemove [attr.aria-label]="'Remove ' + alias">
+                  <i class="fa-solid fa-circle-xmark text-black"></i>
+                </button>
+              </mat-chip-row>
+
+              <!-- The text input for typing out a new chip -->
+              <input placeholder="Enter Alias..."
+                     [matChipInputFor]="chipGrid"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="true"
+                     (matChipInputTokenEnd)="this.addAlias($event)"/>
+
+            </mat-chip-grid>
+
+            <!-- Show the hint if the form is not dirty -->
+            <mat-hint *ngIf="this.myForm.controls.aliases.pristine">Press 'Enter' to add an alias</mat-hint>
+
+            <mat-error>This field is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <!-- Is it a COSC? -->
+          <span class="app-form-label">Is it Country of Special Concern?</span>
+          <div>
+            <mat-checkbox formControlName="isCosc" >Is it COSC?</mat-checkbox>
+          </div>
+
+
+          <div class="mat-mdc-form-field-subscript-wrapper pl-[16px]"
+               *ngIf="(this.myForm.controls.isCosc.errors != null) && (this.myForm.controls.isCosc.touched)">
+            <mat-error>This field is required</mat-error>
+          </div>
+        </div>
+
+        <!-- Button Row -->
+        <div class="flex place-content-center gap-x-5">
+          <div>
+            <!-- Reset Button -->
+            <button type="button" (click)="this.resetClicked()" mat-raised-button title="Reset" aria-label="Reset">Reset</button>
+          </div>
+          <div>
+            <!-- Submit Button -->
+            <button type="button" (click)="this.submitClicked()" mat-raised-button color="primary" title="Submit" aria-label="Submit">Submit</button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+  </div>
+
+
+</form>

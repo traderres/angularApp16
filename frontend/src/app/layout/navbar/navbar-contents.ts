@@ -27,7 +27,35 @@ export const navbarContents: NavGroup[] = [
 			{
 				navItemName: "Sample Page 2",
 				navItemUrl: Constants.SAMPLE_PAGE_ROUTE_2,
-			}
+			},
+      {
+        navItemName: "Grid Page w/Too Many Rows",
+        navItemUrl: Constants.GRID_PAGE_WITH_TOO_MANY_ROWS_ROUTE,
+      },
+      {
+        navItemName: "Grid Page w/Custom Filter",
+        navItemUrl: Constants.GRID_PAGE_WITH_CUSTOM_FILTER_ROUTE,
+      },
+      {
+        navItemName: "Tab Group Page",
+        navItemUrl: Constants.TAB_GROUP_PAGE_ROUTE,
+      },
+      {
+        navItemName: "Dashboard Page",
+        navItemUrl: Constants.DASHBOARD_PAGE_ROUTE,
+      },
+      {
+        navItemName: "Chips w/TextBox",
+        navItemUrl: Constants.CHIPS_WITH_TEXTBOX_PAGE_ROUTE,
+      },
+      {
+        navItemName: "Chips w/AutoComplete",
+        navItemUrl: Constants.CHIPS_WITH_AUTOCOMPLETE_PAGE_ROUTE,
+      },
+      {
+        navItemName: "Grid Page w/Chip Selection",
+        navItemUrl: Constants.GRID_PAGE_WITH_CHIP_SELECTION_ROUTE,
+      }
 		],
 	},
 	{

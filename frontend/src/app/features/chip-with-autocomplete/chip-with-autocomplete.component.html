@@ -1,0 +1,95 @@
+<form [formGroup]="this.myForm" autocomplete="off" novalidate>
+  <div class="m-2.5">
+    <div class="grid grid-cols-2">
+      <div><span class="text-xl">Chips with Auto-Complete</span></div>
+
+      <div class="flex place-content-end">Help</div>
+    </div>
+
+    <div class="overflow-y-auto mt-2.5" style="height: calc(100vh - 150px)">
+
+      <div class="flex flex-col gap-y-[25px]">
+
+        <!--   F I L T E R     B Y     T E A M     T E X T B O X   -->
+        <div class="bg-transparent">
+          <span class="app-form-label">Filter the report to these teams</span>
+
+          <div class="searchBoxWrapper fa-border">
+              <!-- Teams Text Box -->
+              <input id="searchBox" [matAutocomplete]="autocomplete1" matInput type="text" formControlName="teams"
+                     placeholder="Enter Team Name..."
+                     title="Search for Teams" aria-label="Search for Teams"/>
+
+              <!-- Search Icon -->
+              <span class="searchBoxIcon">
+                <i class="fa fa-search"></i>
+            </span>
+
+            <mat-autocomplete #autocomplete1="matAutocomplete" panelWidth="auto"
+                              (optionSelected)="this.userSelectedTeam($event.option.value)">
+
+              <ng-container *ngIf="(this.obsSearchMatchesToShow | async) as matches">
+
+                <ng-container *ngFor="let match of matches">
+                  <mat-option [value]="match"> {{match.teamName}} / {{match.teamPersonCount}}</mat-option>
+                </ng-container>
+
+              </ng-container>
+
+            </mat-autocomplete>
+          </div>
+
+
+
+          <!--  D I S P L A Y       C H I P S   -->
+          <div class="flex flex-row gap-x-5">
+            <mat-chip-row  *ngFor="let team of this.selectedTeams; let index=index"
+                           (removed)="this.removeTeam(index)">
+
+              <div>
+                <!-- The chip text -->
+                {{ team.teamName }}
+
+                <!-- Add a button to remove this chip -->
+                <button matChipRemove [attr.aria-label]="'Remove ' + team.teamName">
+                  <i class="fa-solid fa-circle-xmark text-black"></i>
+                </button>
+              </div>
+            </mat-chip-row>
+          </div>
+
+
+        </div>
+
+        <!--   D A T E       R A N G E       C O N T R O L S    -->
+        <div class="w-[300px]">
+          <span class="app-form-label">Filter the report by date range</span>
+          <mat-form-field class="max-reduced-density !h-[36px]" subscriptSizing="dynamic">
+            <!-- Date Range / Date Textbox that holds start & end dates -->
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Start date" formControlName="startDate">
+              <input matEndDate placeholder="End date" formControlName="endDate">
+            </mat-date-range-input>
+
+            <!-- Date Range / Date Picker Icon -->
+            <mat-datepicker-toggle class="max-reduced-calendar" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+        </div>
+
+
+        <!-- Button Row -->
+        <div class="flex place-content-center gap-x-5">
+          <div>
+            <button type="button" (click)="this.resetClicked()" mat-raised-button title="Reset">Reset</button>
+          </div>
+
+          <div>
+            <button type="button" mat-raised-button color="primary" title="Run Report">Run Report</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>
