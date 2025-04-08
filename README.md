@@ -16,6 +16,7 @@ Procedures
   1. Install or upgrade Node and the Angular CLI
      a. Use NVM to install Node v18.17.0            # Angular 16.2 requires node 18.10.0 or later
         unix> nvm install 18.17.0
+        unix> nvm use 18.7.0                        # Switch to 18.17.0
         unix> nvm alias default 18.17.0             # Set the default version in your shell to this version
     
     
